@@ -1,0 +1,175 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #e3f2fd;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #1c9adf;
+    padding: 15px;
+    text-align: center;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/* Search Section */
+.search-wrapper {
+    flex-grow: 1; /* Push footer to bottom */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease-in-out;
+}
+
+h2 {
+    text-align: center;
+    color: #005f87;
+    margin-top: 20px;
+    font-size: 2rem;
+}
+
+.search-results-heading{
+    font-size: 2rem;
+    text-align: center;
+}
+
+/* Search Box Container */
+.search-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Space between inputs */
+    align-items: center;
+    margin: 40px auto;
+    padding: 20px;
+    max-width: 700px;
+    background: linear-gradient(to right, #d4eaff, #b3d9ff); /* Light blue gradient */
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(5, 64, 95, 0.2);
+    transition: all 0.5s ease-in-out;
+}
+
+.search-container input {
+    flex: 1; /* Equal width for both fields */
+    padding: 12px;
+    border: 2px solid #0077b6;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+.search-container button {
+    padding: 12px 20px;
+    background: #1983bd;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.search-container button:hover {
+    background: #0c94ce;
+}
+
+/* Doctor Card Grid */
+.doctor-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+}
+
+/* Doctor Card */
+.doctor-card {
+    background: #f0f8ff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.doctor-card:hover {
+    transform: translateY(-5px);
+}
+
+.doctor-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #0077b6;
+    margin-bottom: 10px;
+}
+
+.doctor-card p {
+    font-size: 16px;
+    color: #333;
+    margin: 8px 0;
+}
+
+.no-results {
+    font-size: 18px;
+    font-weight: bold;
+    color: #d9534f;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Footer (Sticky to Bottom) */
+.footer {
+    background-color: #0077b6;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: auto;
+}
+
+/* View Profile Button */
+.profile-btn {
+    display: inline-block;
+    padding: 8px 12px;
+    margin-top: 10px;
+    background: #19aaf8;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.profile-btn:hover {
+    background: #1d86ee;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .search-container {
+        flex-direction: column;
+    }
+    .search-container input {
+        width: 100%;
+    }
+}

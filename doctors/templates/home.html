@@ -1,0 +1,21 @@
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome to the Homepage</h1>
+
+    <!-- Buttons to Navigate -->
+    <a href="{% url 'doctors:register' %}">
+        <button>Register as Doctor</button>
+    </a>
+
+    <a href="{% url 'doctors:search_doctors' %}">
+        <button>Find a Doctor</button>
+    </a>
+
+    <a href="{% url 'doctors:vacc_form' %}">
+        <button>Check Vaccination Schedule</button>
+    </a>
+</body>
+</html>

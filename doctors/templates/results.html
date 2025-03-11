@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f8ff;
+            text-align: center;
+        }
+        .results-container {
+            margin-top: 50px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background: white;
+            margin: 10px auto;
+            padding: 15px;
+            width: 50%;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        a {
+            text-decoration: none;
+            color: #0077b6;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="results-container">
+        <h2>Doctors Specializing in "{{ query }}"</h2>
+        
+        {% if doctors %}
+            <ul>
+                {% for doctor in doctors %}
+                    <li>
+                        <strong>{{ doctor.name }}</strong> - {{ doctor.speciality }}<br>
+                        <a href="#">View Profile</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No doctors found with this specialty.</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>

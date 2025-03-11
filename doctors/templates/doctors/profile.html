@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Profile</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">Healthcare App</div>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Support</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Success Message -->
+    {% if success_message %}
+        <div class="alert alert-success">
+            {{ success_message }}
+        </div>
+        <script>
+            setTimeout(function() {
+                let messageContainer = document.querySelector('.alert-success');
+                if (messageContainer) {
+                    messageContainer.style.display = 'none';
+                }
+            }, 3000); // Hide after 3 seconds
+        </script>
+    {% endif %}
+
+    <!-- Profile Section -->
+    <section class="profile-section container">
+        <h2>Doctor Profile</h2>
+
+        <div class="profile-picture">
+            {% if doctor.profile_picture %}
+    <img src="{{ doctor.profile_picture.url }}" alt="Doctor Image">
+{% else %}
+    <img src="/media/dpp.jpg" alt="Default Profile Picture">
+{% endif %}
+        </div>
+
+        <div class="profile-card">
+            <h3>{{ doctor.first_name }} {{ doctor.last_name }}</h3>
+            <p><strong>Age:</strong> {{ doctor.age }}</p>
+            <p><strong>Sex:</strong> {{ doctor.get_sex_display }}</p>
+            <p><strong>Degree:</strong> {{ doctor.degree }}</p>
+            <p><strong>Specialist:</strong> {{ doctor.specialist|default:"N/A" }}</p>
+            <p><strong>Aadhar Number:</strong> {{ doctor.aadhar }}</p>
+            
+            {% if doctor.certificate %}
+                <p><strong>Certificate:</strong> <a href="{{ doctor.certificate.url }}" target="_blank">View Certificate</a></p>
+            {% else %}
+                <p><strong>Certificate:</strong> Not Uploaded</p>
+            {% endif %}
+            
+            <p><strong>Email:</strong> {{ doctor.email }}</p>
+            <p><strong>Mobile:</strong> {{ doctor.mobile }}</p>
+
+            <hr>
+
+            <h3>Clinic/Hospital Details</h3>
+            <p><strong>Clinic/Hospital Name:</strong> {{ doctor.Clinic_Name|default:"N/A" }}</p>
+            <p><strong>Clinic Address:</strong> {{ doctor.Clinic_address|default:"N/A" }}</p>
+            <p><strong>Clinic Contact:</strong> {{ doctor.Clinic_Contact_Number|default:"N/A" }}</p>
+
+            <hr>
+
+            <h3>Other Details</h3>
+            <p><strong>Profile Suggestion:</strong> {{ doctor.get_profile_suggestion_display }}</p>
+            <p><strong>Contact Through App:</strong> {% if doctor.contact_through_app %} Yes {% else %} No {% endif %}</p>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Healthcare App. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

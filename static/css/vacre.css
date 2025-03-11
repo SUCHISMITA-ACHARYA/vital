@@ -1,0 +1,131 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #90caf9, #e3f2fd);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Outer Container */
+.container {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: 85%;
+    max-width: 900px;
+    box-sizing: border-box; /* Ensures padding doesn't overflow */
+}
+
+/* Headings with Borders & Gradient */
+h2 {
+    font-size: 26px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    color: #01579b;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #0288d1, #b3e5fc);
+    border: 3px solid #01579b;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* Individual Section Headings */
+.section-title {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: left;
+    padding: 10px;
+    color: #ffffff;
+    background: linear-gradient(to right, #0288d1, #039be5);
+    border-left: 6px solid #01579b;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
+/* Card Styles - FIXED WIDTH ISSUE */
+.card {
+    background: linear-gradient(to bottom, #aad8f8, #80bef0);
+    padding: 25px;
+    border-radius: 12px;
+    margin: 25px 0;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+    width: 100%; /* Ensures it stays inside the container */
+    box-sizing: border-box;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #bbb;
+    text-align: left;
+}
+
+th {
+    background: #01579b;
+    color: white;
+    font-size: 16px;
+    border-bottom: 3px solid #0288d1;
+}
+
+td {
+    background: #e1f5fe;
+}
+
+/* Button */
+.button {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 18px;
+    background: #0288d1;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.button:hover {
+    background: #01579b;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+    
+    h2 {
+        font-size: 22px;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+
+    th, td {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .button {
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+}

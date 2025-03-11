@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaccination Schedule</title>
+    <link rel="stylesheet" href="{% static 'css/vacre.css' %}">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Recommended Vaccinations</h2>
+
+        <!-- Missed Vaccinations Table -->
+        {% if missed_vaccinations %}
+            <div class="card">
+                <h3>Missed Vaccinations</h3>
+                <table>
+                    <tr>
+                        <th>Age</th>
+                        <th>Vaccine</th>
+                        <th>Notes</th>
+                    </tr>
+                    {% for v in missed_vaccinations %}
+                    <tr>
+                        <td>{{ v.age }}</td>
+                        <td>{{ v.name }}</td>  <!-- Ensure vaccine name appears -->
+                        <td>{{ v.notes }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        {% endif %}
+
+        <!-- Upcoming Vaccinations Table -->
+        {% if upcoming_vaccinations %}
+            <div class="card">
+                <h3>Upcoming Vaccinations</h3>
+                <table>
+                    <tr>
+                        <th>Age</th>
+                        <th>Vaccine</th>
+                        <th>Notes</th>
+                    </tr>
+                    {% for v in upcoming_vaccinations %}
+                    <tr>
+                        <td>{{ v.age }}</td>
+                        <td>{{ v.name }}</td>  <!-- Ensure vaccine name appears -->
+                        <td>{{ v.notes }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        {% endif %}
+
+        <a href="{% url 'doctors:vacc_form' %}" class="button">Check Another Age</a>
+    </div>
+
+</body>
+</html>

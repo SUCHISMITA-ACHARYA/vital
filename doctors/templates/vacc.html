@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaccination Form</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vacc.css' %}">
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Enter Your Details</h1>
+
+        <form method="POST" action="{% url 'doctors:vacc_result' %}">
+            {% csrf_token %}
+            
+            <label for="age">Enter Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="gender">Select Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+
+            <button type="submit">Get Vaccination Schedule</button>
+        </form>
+    </div>
+
+</body>
+</html>

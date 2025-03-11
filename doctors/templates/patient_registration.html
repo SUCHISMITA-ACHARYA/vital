@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Registration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Popup Style */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .popup button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #2E8BC0;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .popup button:hover {
+            background-color: #1A629A;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Registration Form -->
+    <div class="form-container">
+        <h2>Patient Registration</h2>
+        {% if messages %}
+            <div class="overlay"></div>
+            <div class="popup" id="popup">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+                <button onclick="closePopup()">OK</button>
+            </div>
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    document.getElementById("popup").style.display = "block";
+                    document.querySelector(".overlay").style.display = "block";
+                });
+
+                function closePopup() {
+                    document.getElementById("popup").style.display = "none";
+                    document.querySelector(".overlay").style.display = "none";
+                }
+            </script>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+</body>
+</html>

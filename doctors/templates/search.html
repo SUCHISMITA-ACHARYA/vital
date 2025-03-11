@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Doctors</title>
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'doctors:search_doctors' %}">Find Doctors</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <!-- Search Section -->
+    <div class="search-wrapper">
+        <h2>Find a Doctor</h2>
+        <div class="search-container" id="searchBox">
+            <form method="GET" action="{% url 'doctors:search_doctors' %}" class="search-form">
+                
+                <!-- Search by Specialty -->
+                <input type="text" name="specialist" placeholder="Search by specialty..." value="{{ query }}" list="specialtyList" autocomplete="off">
+                <datalist id="specialtyList">
+                    {% for specialty in specialties %}
+                        <option value="{{ specialty }}"></option>
+                    {% endfor %}
+                </datalist>
+        
+                <!-- Search by City -->
+                <input type="text" name="city" placeholder="Search by city..." value="{{ city_query }}" list="cityList" autocomplete="off">
+                <datalist id="cityList">
+                    {% for city in cities %}
+                        <option value="{{ city }}"></option>
+                    {% endfor %}
+                </datalist>
+        
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Display Search Results -->
+    {% if query or city_query %}
+        <script>
+            document.getElementById("searchBox").style.marginTop = "10px"; // Move search bar up when searching
+        </script>
+
+        <h3 class="search-results-heading">Search results for "{{ query }} in {{ city_query }}"</h3>
+
+        {% if doctors %}
+            <div class="doctor-container">
+                {% for doctor in doctors %}
+                    <div class="doctor-card">
+                        {% if doctor.profile_picture %}
+                            <img src="{{ doctor.profile_picture.url }}" alt="Doctor Image">
+                        {% else %}
+                            <img src="/media/dpp.jpg" alt="Default Profile Picture">
+                        {% endif %}
+
+                        <p><strong>Name:</strong> {{ doctor.first_name }} {{ doctor.last_name }}</p>
+                        <p><strong>Age:</strong> {{ doctor.age }}</p>
+                        <p><strong>Specialty:</strong> {{ doctor.specialist }}</p>
+                        <p><strong>Contact:</strong> {{ doctor.Clinic_Contact_Number }}</p>
+                        <p><strong>City:</strong> {{ doctor.Clinic_City }}</p>
+                        <a href="{% url 'doctors:profile' doctor.id %}" class="profile-btn">View Profile</a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="no-results">No doctors found. Try a different search.</p>
+        {% endif %}
+    {% endif %}
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2025 Doctor Finder | All Rights Reserved</p>
+    </div>
+
+</body>
+</html>
